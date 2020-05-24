@@ -3,16 +3,33 @@
 <head>
     <link rel="stylesheet" type="text/css" href="index.css">
 </head>
-
+<body>
 <h1>Links</h1>
 <p>Links go here</p>
 <!--<form action="/submission">-->
-<form id="master" onsubmit="return appendLink('!!LINK!!')">
+<form id="master">
     <label for="mlink">Link:</label>
     <input type="text" id="mlink" name="mlink"><br><br>
     <input type="submit" value="Submit">
 </form>
+
+<form id="dup">
+    <label for="mlink">Link alternate:</label>
+    <input type="text" id="nlink" name="nlink"><br><br>
+</form>
+
 <br><br>
+
+<form action="/viewlinks">
+    <input type="submit" value="View Links">
+</form>
+
+<button type="button" onclick="dispLinks()">Display Links</button>
+
+
+
+<ul id="LinkList">
+</ul>
 <script>
     function appendLink(link) {
         console.log("In function append link");
@@ -28,18 +45,11 @@
     function dispLinks() {
         var ul = document.getElementById("LinkList");
         var li = document.createElement("li");
-        li.appendChild(document.createTextNode("TEST"));
+        var linkstr = document.getElementById("nlink").value;
+        li.appendChild(document.createTextNode(linkstr));
         ul.appendChild(li);
     }
 </script>
-<form action="/viewlinks">
-    <input type="submit" value="View Links">
-</form>
+</body>
 
-<button type="button" onclick="dispLinks()">Display Links</button>
-
-
-
-<ul id="LinkList">
-</ul>
 </html>
